@@ -16,8 +16,8 @@ RUN apt-get update && \
 COPY ./supervisord.conf /etc/supervisor/supervisord.conf
 
 # Create a non-root runtime user with group 33 (apache's www-data group)
-RUN groupadd --force -g 33 smp
-RUN useradd -ms /bin/bash --no-user-group -g 33 -u 1337 smp
+RUN groupadd --force -g 33 runtime
+RUN useradd -ms /bin/bash --no-user-group -g 33 -u 1337 runtime
 
 # Run supervisor on start
 CMD ["/usr/bin/supervisord"]

@@ -23,7 +23,9 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
     php composer-setup.php --install-dir=/usr/bin/ --filename=composer && \
     php -r "unlink('composer-setup.php');"
 
-# Configure the default site
+# Copy our prod-ready configs in
+COPY ./security.conf /etc/apache2/conf-available/security.conf
+COPY ./php.ini /usr/local/etc/php/php.ini
 COPY ./000-default.conf /etc/apache2/sites-available/000-default.conf
 RUN a2enmod rewrite
 

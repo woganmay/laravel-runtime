@@ -11,7 +11,7 @@ RUN apt-get update && \
     pecl install redis-6.0.2 && \
     docker-php-ext-configure gd --with-jpeg --with-webp --with-freetype && \
     docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql && \
-    docker-php-ext-install pgsql pdo pdo_pgsql zip pcntl bcmath curl dom mbstring && \
+    docker-php-ext-install pgsql pdo pdo_pgsql zip pcntl bcmath curl dom mbstring pdo_mysql mysqli && \
     docker-php-ext-install gd && \
     docker-php-ext-enable redis bcmath curl dom mbstring && \
     rm -rf /var/lib/apt/lists/*

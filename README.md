@@ -10,7 +10,7 @@ This repo generates a Docker image that includes:
 
 * In the App image:
   * The official PHP 8.3 Apache image
-  * PHP Extensions: pgsql pdo pdo_pgsql zip pcntl bcmath curl dom mbstring gd redis 
+  * PHP Extensions: pgsql pdo pdo_pgsql pdo_mysql mysqli zip pcntl bcmath curl dom mbstring gd redis 
   * Latest version of composer pre-installed
   * An Apache site defintion that enables URL rewriting
 
@@ -18,6 +18,7 @@ This repo generates a Docker image that includes:
   * The official PHP 8.3 CLI image
   * PHP Extensions: gd pdo_pgsql zip pcntl bcmath curl dom mbstring redis
   * Supervisor for running background jobs + a config file to run Horizon
+  * `artisan schedule:run` every minute via Supervisor
 
 These images publish to a public repository.
 

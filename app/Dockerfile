@@ -8,12 +8,12 @@ RUN mkdir -p /usr/local/lib/php/extensions/no-debug-non-zts-20230831/modules
 # Docs: https://github.com/mlocati/docker-php-extension-installer
 RUN apt-get update && \
     apt-get install -y libpq-dev libzip-dev libcurl4-openssl-dev libxml2-dev libonig-dev libjpeg-dev libpng-dev libwebp-dev libfreetype-dev && \
-    pecl install redis-6.0.2 && \
+    pecl install redis-6.0.2 ssh2-1.4.1 && \
     docker-php-ext-configure gd --with-jpeg --with-webp --with-freetype && \
     docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql && \
     docker-php-ext-install pgsql pdo pdo_pgsql zip pcntl bcmath curl dom mbstring pdo_mysql mysqli && \
     docker-php-ext-install gd && \
-    docker-php-ext-enable redis bcmath curl dom mbstring && \
+    docker-php-ext-enable redis bcmath curl dom mbstring ssh2 && \
     rm -rf /var/lib/apt/lists/*
 
 # Install the latest Composer

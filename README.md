@@ -13,12 +13,14 @@ This repo generates a Docker image that includes:
   * PHP Extensions: pgsql pdo pdo_pgsql pdo_mysql mysqli zip pcntl bcmath curl dom mbstring gd redis ssh2
   * Latest version of composer pre-installed
   * An Apache site defintion that enables URL rewriting
+  * `openssh-client` for the `ssh` and `scp` commandline utilities
 
 * In the Worker image:
   * The official PHP 8.3 CLI image
   * PHP Extensions: gd pdo_pgsql zip pcntl bcmath curl dom mbstring redis ssh2
   * Supervisor for running background jobs + a config file to run Horizon
   * `artisan schedule:run` every minute via Supervisor
+  * `openssh-client` for the `ssh` and `scp` commandline utilities
 
 These images publish to a public repository.
 

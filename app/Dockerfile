@@ -7,7 +7,7 @@ RUN mkdir -p /usr/local/lib/php/extensions/no-debug-non-zts-20230831/modules
 # Install the PostgreSQL PDO extension
 # Docs: https://github.com/mlocati/docker-php-extension-installer
 RUN apt-get update && \
-    apt-get install -y libpq-dev libzip-dev libcurl4-openssl-dev libxml2-dev libonig-dev libjpeg-dev libpng-dev libwebp-dev libfreetype-dev libssh2-1-dev && \
+    apt-get install -y libpq-dev libzip-dev libcurl4-openssl-dev libxml2-dev libonig-dev libjpeg-dev libpng-dev libwebp-dev libfreetype-dev libssh2-1-dev openssh-client && \
     pecl install redis-6.0.2 ssh2-1.4.1 && \
     docker-php-ext-configure gd --with-jpeg --with-webp --with-freetype && \
     docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql && \

@@ -4,7 +4,7 @@ WORKDIR /var/www/html
 
 # Install the same modules as the App
 RUN apt-get update && \
-    apt-get install -y libpq-dev libzip-dev libjpeg-dev libpng-dev libwebp-dev libfreetype-dev libcurl4-openssl-dev libxml2-dev libonig-dev libssh2-1-dev supervisor openssh-client && \
+    apt-get install -y libpq-dev libzip-dev libjpeg-dev libpng-dev libwebp-dev libfreetype-dev libcurl4-openssl-dev libxml2-dev libonig-dev libssh2-1-dev supervisor openssh-client postgresql-client-15 && \
     pecl install redis-6.0.2 ssh2-1.4.1 && \
     docker-php-ext-configure gd --with-jpeg --with-webp --with-freetype && \
     docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql && \

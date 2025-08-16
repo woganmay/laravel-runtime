@@ -3,7 +3,13 @@ FROM php:8.3-cli
 WORKDIR /var/www/html
 
 # Install the same modules as the App
+# Note: trixie hardcoded as $VERSION_CODENAME since php:8.3-cli is built on it
 RUN apt-get update && \
+    apt-get install wget && \
+    . /etc/os-release && \
+    echo 'deb [signed-by=/usr/share/keyrings/postgresql.gpg] https://apt.postgresql.org/pub/repos/apt trixie-pgdg main' > /etc/apt/sources.list.d/pgdg.list && \
+    wget --quiet -O /usr/share/keyrings/postgresql.gpg https://www.postgresql.org/media/keys/ACCC4CF8.asc && \
+    apt-get update && \
     apt-get install -y libpq-dev libzip-dev libjpeg-dev libpng-dev libwebp-dev libfreetype-dev libcurl4-openssl-dev libxml2-dev libonig-dev libssh2-1-dev supervisor openssh-client postgresql-client-15 && \
     pecl install redis-6.0.2 ssh2-1.4.1 && \
     docker-php-ext-configure gd --with-jpeg --with-webp --with-freetype && \

@@ -6,7 +6,6 @@ WORKDIR /var/www/html
 # Note: trixie hardcoded as $VERSION_CODENAME since php:8.3-cli is built on it
 RUN apt-get update && \
     apt-get install wget && \
-    . /etc/os-release && \
     echo 'deb [signed-by=/usr/share/keyrings/postgresql.gpg] https://apt.postgresql.org/pub/repos/apt trixie-pgdg main' > /etc/apt/sources.list.d/pgdg.list && \
     wget --quiet -O /usr/share/keyrings/postgresql.gpg https://www.postgresql.org/media/keys/ACCC4CF8.asc && \
     apt-get update && \

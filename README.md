@@ -22,6 +22,10 @@ This repo generates a Docker image that includes:
   * `artisan schedule:run` every minute via Supervisor
   * `openssh-client` for the `ssh` and `scp` commandline utilities
 
+* In the Omnibus image:
+  * The App + Worker images combined
+  * Includes apache, php-fpm and supervisor for Horizon
+
 These images publish to a public repository.
 
 ## Sample: Dockerfile for App container
@@ -42,7 +46,7 @@ CMD ["apache2-foreground"]
 
 This build assumes that the Dockerfile is relative to your project root, so that index.php copies into /var/www/html/ on the container.
 
-## Sample: Dockerfile for Worker container
+## Sample: Dockerfile for Worker/Omnibus container
 
 ```Dockerfile
 FROM ghcr.io/woganmay/laravel-runtime-worker:latest

@@ -1,4 +1,4 @@
-FROM php:8.3-apache
+FROM php:8.4-apache
 
 WORKDIR /var/www/html
 
@@ -8,6 +8,7 @@ RUN mkdir -p /usr/local/lib/php/extensions/no-debug-non-zts-20230831/modules
 # Docs: https://github.com/mlocati/docker-php-extension-installer
 RUN apt-get update && \
     apt-get install wget && \
+    apt-get install -y --only-upgrade apache2 && \
     echo 'deb [signed-by=/usr/share/keyrings/postgresql.gpg] https://apt.postgresql.org/pub/repos/apt trixie-pgdg main' > /etc/apt/sources.list.d/pgdg.list && \
     wget --quiet -O /usr/share/keyrings/postgresql.gpg https://www.postgresql.org/media/keys/ACCC4CF8.asc && \
     apt-get update && \

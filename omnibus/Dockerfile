@@ -1,4 +1,4 @@
-FROM php:8.4-apache
+FROM php:8.3-apache
 # TODO: FROM php:8.3-cli
 
 WORKDIR /var/www/html
